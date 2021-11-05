@@ -1,5 +1,8 @@
 package ru.job4j.di;
 
+/**
+ * Here we are using an own context-class
+ */
 public class Main {
     public static void main(String[] args) {
         Context context = new Context();
