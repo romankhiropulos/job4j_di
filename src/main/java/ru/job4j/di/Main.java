@@ -11,6 +11,7 @@ public class Main {
         context.reg(StartUI.class);
 
         StartUI ui = context.get(StartUI.class);
+        ui.setStore(context.get(Store.class));
 
         ui.add("Petr Arsentev");
         ui.add("Ivan ivanov");

@@ -23,4 +23,8 @@ public class StartUI {
             System.out.println(value);
         }
     }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
 }
