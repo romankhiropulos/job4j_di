@@ -1,11 +1,17 @@
-FROM maven:3.6.3-openjdk-17
+# Этап 1 - сборка проекта в jar
+FROM maven:3.6.3-openjdk-17 AS maven
 
-RUN mkdir job4j_di
+WORKDIR /app
 
-WORKDIR job4j_di
+COPY . /app
 
-COPY . .
+RUN mvn package
 
-RUN mvn install
+# Этап 2 - указание как запустить проект
+FROM openjdk:17-alpine
 
-CMD ["java", "-jar", "target/main.jar"]
+WORKDIR /app
+
+COPY --from=maven /app/target/main.jar main.jar
+
+CMD ["java", "-jar", "main.jar"]
